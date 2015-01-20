@@ -90,7 +90,10 @@ function current_HTTP() {
 	<body>
 		<div class="container imaged">
 			<div class="row row-centered">
-				<h1 class="page-header">CallMe Video Chat</h1>
+				<h1 class="page-header">CallMe Video Chat<br>
+					<small>Can be downloaded from: <a href="https://github.com/andrastoth/callme" target="_blank"> GitHub </a> OR <a href="http://www.jsclasses.org/package/393-JavaScript-Establish-video-chat-communications-between-users.html" target="_blank"> JSclasses</a>
+					</small>
+				</h1>
 				<div class="col-md-6 col-centered">
 					<ul class="nav nav-tabs">
 						<li class="active"><a data-toggle="tab" href="#login-form">Sign in</a></li>

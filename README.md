@@ -16,6 +16,11 @@ CallMe is a very simple Video chat application
 
 Version
 ----
+0.0.2
+- MSSQL Server Database support
+
+Version
+----
 0.0.1
 Requirements
 ----
@@ -51,19 +56,23 @@ $_SESSION['cfg'] = array(
 	'SQL_CONN' => 'mysql:host=HOST;dbname=DB_NAME;charset=utf8', 
 	'SQL_USER' => 'USER', 
 	'SQL_PASS' => 'PASS',
+	//sqlsrv connect :
+	//'SQL_CONN' => 'sqlsrv:Server=SERVER;Database=DB_NAME', 
+	//'SQL_USER' => null, 
+	//'SQL_PASS' => null,
 	'PEER_KEY' => 'OBTAINED_PEER_KEY'
 	);
 ?>
 ```
 Planned updates
 ----
-v.0.0.2
+v.0.0.3
 - Only own contact showed
 - Search among users by name Or email
 - Send contact request
 - Accept or deny request
  
-v.0.0.3
+v.0.0.4
 - Sending Message to another user (Chat)
 
 Used plugins, frameworks etc:
