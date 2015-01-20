@@ -1,0 +1,68 @@
+.row-centered {
+    text-align: center;
+}
+.col-centered {
+    padding: 10px;
+    display: inline-block;
+    float: none;
+    text-align: left;
+    margin-right: -4px;
+}
+.row-centered > .col-centered {
+    background-color: rgba(255, 165, 0, 0.8);
+}
+.imaged {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    margin: 0;
+    background-color: rgba(45, 45, 45, 0.2);
+    background-image: url("images/callme.png");
+    background-position: bottom left;
+    background-size: 20%;
+    background-repeat: no-repeat;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #286090;
+    border-color: #286090;
+    color: whitesmoke;
+}
+.nav-tabs > li > a:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: whitesmoke;
+}
+.nav-tabs {
+    border-bottom: 1px solid #286090;
+}
+.btn {
+    color: whitesmoke;
+}
+.tab-pane {
+    text-align: center;
+}
+.tab-pane .col-md-6 {
+    text-align: left;
+}
+.page-header {
+    border-color: #286090;
+    padding: 10px;
+    color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(45, 45, 45, 0.2);
+}
+form .col-md-6 img {
+    border: solid 5px #286090;
+    background-color: white;
+    width: 240px;
+    margin: 30px;
+}
+form .col-md-6 img:hover {
+     border: solid 5px white;
+    cursor: pointer;
+}
+.alert-danger {
+    position: absolute;
+    width: 90%;
+    top: 0;
+    left: 5%;
+}

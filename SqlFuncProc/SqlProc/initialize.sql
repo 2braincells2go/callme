@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS `callme_users` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(12) NULL DEFAULT NULL COLLATE 'utf8_hungarian_ci',
+	`email` VARCHAR(50) NULL DEFAULT NULL COLLATE 'utf8_hungarian_ci',
+	`pass` VARCHAR(12) NULL DEFAULT NULL COLLATE 'utf8_hungarian_ci',
+	`peer_id` VARCHAR(20) NULL DEFAULT NULL COLLATE 'utf8_hungarian_ci',
+	`img` MEDIUMBLOB NULL,
+	`updated` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (`id`),
+	UNIQUE INDEX `email` (`email`)
+) COLLATE='utf8_hungarian_ci' ENGINE=InnoDB;

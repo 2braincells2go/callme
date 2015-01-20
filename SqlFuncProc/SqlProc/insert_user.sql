@@ -1,0 +1,1 @@
+INSERT INTO `callme_users`(`name`, `email`, `pass`, `img`) VALUES (?, ?, ?, ?);
