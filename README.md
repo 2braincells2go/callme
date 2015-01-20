@@ -32,7 +32,7 @@ Installation
 
 Usage
 ----
-- Crate user (register) 
+- Create user (register) 
 - Sign in with existing user
 - Clikc another user on the left panel
 - Press call button
