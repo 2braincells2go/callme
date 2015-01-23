@@ -127,6 +127,41 @@
     position: absolute;
     width: 100%;
 }
+:-webkit-full-screen #their-video{
+    left: 0;
+    top: -25%;
+    position: absolute;
+    bottom: -25%;
+    right: 0;
+}
+:-moz-full-screen #their-video{
+    left: 0;
+    top: -25%;
+    position: absolute;
+    bottom: -25%;
+    right: 0;
+}
+:-ms-fullscreen #their-video{
+    left: 0;
+    top: -25%;
+    position: absolute;
+    bottom: -25%;
+    right: 0;
+}
+:full-screen #their-video{     
+    left: 0;
+    top: -25%;
+    position: absolute;
+    bottom: -25%;
+    right: 0;
+}
+:fullscreen #their-video{    
+    left: 0;
+    top: -25%;
+    position: absolute;
+    bottom: -25%;
+    right: 0;
+}
 .glyphicon {
     line-height: 1.8;
 }
@@ -194,4 +229,7 @@
     position: absolute;
     top: 10%;
     left: 25%;
+}
+input, button{
+    outline:0 !important;
 }
