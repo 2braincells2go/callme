@@ -97,7 +97,6 @@ function current_HTTP() {
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/bootstrap.js"></script>
     <script type="text/javascript" src="js/peer.min.js"></script>
-    <script type="text/javascript" src="js/jquery.fullscreen.min.js"></script>
     <script type="text/javascript">var peerKey ="<?php echo $_SESSION['cfg']['PEER_KEY']; ?>";</script>
     <script type="text/javascript" src="js/callme.js"></script>
     </body>
