@@ -70,3 +70,6 @@ form .col-md-6 img:hover {
 body{
 	background-color: rgba(213, 213, 213, 1);
 }
+input, button{
+    outline:0 !important;
+}
