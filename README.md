@@ -16,6 +16,11 @@ CallMe is a very simple Video chat application
 
 Version
 ----
+0.0.2.1
+- Fix Firefox video stream, fullscreen error 
+
+Version
+----
 0.0.2
 - MSSQL Server Database support
 
@@ -79,7 +84,6 @@ Used plugins, frameworks etc:
 ----
 - [jQuery]
 - [Bootstrap]
-- [jQuery.fullscreen]
 - [PeerJS]
 
 License
@@ -94,4 +98,3 @@ http://atandrastoth.co.uk/
 [CallMe]:http://atandrastoth.co.uk/main/pages/callme/
 [PeerJS]:http://peerjs.com/
 [Bootstrap]:http://getbootstrap.com/
-[jQuery.fullscreen]:https://github.com/private-face/jquery.fullscreen
