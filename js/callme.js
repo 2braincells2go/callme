@@ -68,7 +68,6 @@
         selectedUser.call = call;
         prepareCall(call);
         callModalHandler('show', 'Calling...', selectedUser.name, selectedUser.img, false, true, 'outTonePlay');
-        $(event.target || event.srcElement).blur();
     });
     startCall.eq(1).click(function(event) {
         startCall.addClass('hidden');
@@ -83,24 +82,12 @@
         }
         callModalHandler('hide', '', '', '', bt, false, 'outToneStop');
         peerCallClose(user.call);
-        $(event.target || event.srcElement).blur();
     });
     this.camera = null;
     var camera = function(disp, vSrc, aSrc, canWidth, canHeight) {
-        var videoSource = [];
-        var audioSource = [];
-        vSrc = typeof vSrc == 'undefined' ? 0 : vSrc;
-        aSrc = typeof aSrc == 'undefined' ? 0 : aSrc;
         canWidth = typeof canWidth == 'undefined' ? 240 : canWidth;
         canHeight = typeof canHeight == 'undefined' ? 176 : canHeight;
         this.error = null;
-        if (typeof MediaStreamTrack.getSources === 'undefined') {
-            this.error = 'This browser does not support MediaStreamTrack.\n\nTry Google Chrome.';
-            videoSource.push(0);
-            audioSource.push(0);
-        } else {
-            MediaStreamTrack.getSources(getSources);
-        };
         this.init = function() {
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
@@ -111,16 +98,8 @@
                 video.height = canHeight;
                 video.autoplay = true;
                 navigator.getUserMedia({
-                    audio: {
-                        optional: [{
-                            sourceId: audioSource[aSrc]
-                        }]
-                    },
-                    video: {
-                        optional: [{
-                            sourceId: videoSource[vSrc]
-                        }]
-                    }
+                    audio: true,
+                    video: true
                 }, function(stream) {
                     if (video.mozSrcObject !== undefined) {
                         video.mozSrcObject = stream;
@@ -153,14 +132,6 @@
         this.toggleAudio = function() {
             var tr = window.localStream.getAudioTracks()[0];
             tr.enabled = tr.enabled ? false : true;
-        };
-
-        function getSources(sourceInfos) {
-            for (var i = 0; i != sourceInfos.length; ++i) {
-                var sourceInfo = sourceInfos[i];
-                if (sourceInfos[i].kind == 'video') videoSource.push(sourceInfos[i].id);
-                if (sourceInfos[i].kind == 'audio') audioSource.push(sourceInfos[i].id);
-            }
         };
 
         function draw(v, ctx, w, h) {
