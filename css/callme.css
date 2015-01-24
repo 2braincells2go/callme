@@ -1,17 +1,19 @@
 #wrapper {
-    position: fixed;
-    width: 100%;
-    height: 100%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
     padding-left: 0;
-    -webkit-transition: all 0.5s ease;
-    -moz-transition: all 0.5s ease;
-    -o-transition: all 0.5s ease;
-    transition: all 0.5s ease;
     background-color:  rgba(45, 45, 45, 0.2);
     background-image: url("images/callme.png");
     background-position: center;
     background-size: 50%;
     background-repeat: no-repeat;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 #wrapper.toggled {
     padding-left: 275px;
@@ -127,6 +129,27 @@
     position: absolute;
     width: 100%;
 }
+:-webkit-full-screen{
+    background-color: #2d2d2d;
+}
+:-moz-full-screen{
+    background-color: #2d2d2d;
+}
+:-ms-fullscreen{
+    background-color: #2d2d2d;
+}
+:full-screen{
+    background-color: #2d2d2d;
+}
+:fullscreen{
+    background-color: #2d2d2d;
+}
+::backdrop {
+    background-color: #2d2d2d;
+}
+::-ms-backdrop {
+    background-color: #2d2d2d;
+}
 :-webkit-full-screen #their-video{
     left: 0;
     top: -25%;
@@ -148,19 +171,25 @@
     bottom: -25%;
     right: 0;
 }
-:full-screen #their-video{     
+:full-screen #their-video{
     left: 0;
     top: -25%;
     position: absolute;
     bottom: -25%;
     right: 0;
 }
-:fullscreen #their-video{    
+:fullscreen #their-video{
     left: 0;
     top: -25%;
     position: absolute;
     bottom: -25%;
     right: 0;
+}
+::backdrop {
+  background-color: #2d2d2d;
+}
+::-ms-backdrop {
+  background-color: #2d2d2d;
 }
 .glyphicon {
     line-height: 1.8;

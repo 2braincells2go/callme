@@ -1,5 +1,5 @@
 /*
- * CallMe v0.0.2
+ * CallMe v0.0.1
  * Videochat with peerjs
  * Copyright (c) Tóth András
  * Released under the MIT license
@@ -24,12 +24,12 @@
         ownVideo = $('#own-video'),
         goFullScreen = $('#full-screen'),
         toggleVideo = $('#toggle-video'),
-        toggleAudio = $('#toggle-audio');
+        toggleAudio = $('#toggle-audio'),
+        wrapper = $('#wrapper');
 
-	    var fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled;
-
-    	var selectedUser = null;
- 
+    var fullscreenEnabled = document.fullscreenEnabled || document.mozFullScreenEnabled || document.webkitFullscreenEnabled;
+    var selectedUser = null;
+    
     toggleVideo.click(function(event) {
         $(this).toggleClass('btn-danger');
         CallMe.camera.toggleVideo();
@@ -39,7 +39,14 @@
         CallMe.camera.toggleAudio();
     });
     goFullScreen.click(function(event) {
-        if(fullscreenEnabled) toggleFullScreen();
+        if (fullscreenEnabled) {
+            if (CallMe.fullScreen.isFullScreen) {
+                theirVideo.attr('height', '100%');
+            } else {
+                theirVideo.removeAttr('height');
+            }
+            CallMe.fullScreen.toggleFullScreen(wrapper[0]);
+        }
     });
     menuToggle.click(function(e) {
         wrapper.toggleClass("toggled");
@@ -61,6 +68,7 @@
         selectedUser.call = call;
         prepareCall(call);
         callModalHandler('show', 'Calling...', selectedUser.name, selectedUser.img, false, true, 'outTonePlay');
+        $(event.target || event.srcElement).blur();
     });
     startCall.eq(1).click(function(event) {
         startCall.addClass('hidden');
@@ -75,8 +83,8 @@
         }
         callModalHandler('hide', '', '', '', bt, false, 'outToneStop');
         peerCallClose(user.call);
+        $(event.target || event.srcElement).blur();
     });
-    
     this.camera = null;
     var camera = function(disp, vSrc, aSrc, canWidth, canHeight) {
         var videoSource = [];
@@ -249,6 +257,45 @@
             });
         }
     }
+    this.fullScreen = {
+        isFullScreen: false,
+        toggleFullScreen: function(selector) {
+            if (!this.isFullScreen) {
+                this.goFullScreen(selector);
+            } else {
+                this.exitFullScreen();
+            }
+        },
+        goFullScreen: function(selector) {
+            if (!typeof selector === 'object') {
+                element = document.querySelector(selector);
+            } else {
+                element = selector;
+            }
+            if (element.requestFullScreen) {
+                element.requestFullScreen();
+            } else if (element.mozRequestFullScreen) {
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullScreen) {
+                element.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+            } else if (element.msRequestFullscreen) {
+                element.msRequestFullscreen();
+            }
+            this.isFullScreen = true;
+        },
+        exitFullScreen: function() {
+            if (document.exitFullScreen) {
+                document.exitFullScreen();
+            } else if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
+            this.isFullScreen = false;
+        }
+    };
     this.Tone = {
         inTone: new Audio(),
         outTone: new Audio(),
@@ -431,44 +478,6 @@
         }
         callModal.modal(state);
         CallMe.Tone[tone]();
-    }
-
-    function toggleFullScreen() {
-        var el = theirVideo.parent();
-        if (el.data().isFullscreen) {
-            exitFullscreen(el);
-            menuToggle.removeClass('hidden');
-            theirVideo.attr('height', '100%');
-        } else {
-            launchFullscreen(el);
-            menuToggle.addClass('hidden');
-            theirVideo.removeAttr('height');
-        }
-    }
-
-    function launchFullscreen(el) {
-        var element = el[0];
-        if (element.requestFullscreen) {
-            element.requestFullscreen();
-        } else if (element.mozRequestFullScreen) {
-            element.mozRequestFullScreen();
-        } else if (element.webkitRequestFullscreen) {
-            element.webkitRequestFullscreen();
-        } else if (element.msRequestFullscreen) {
-            element.msRequestFullscreen();
-        }
-        el.data('isFullscreen', true);
-    }
-
-    function exitFullscreen(el) {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        } else if (document.mozCancelFullScreen) {
-            document.mozCancelFullScreen();
-        } else if (document.webkitExitFullscreen) {
-            document.webkitExitFullscreen();
-        }
-        el.data('isFullscreen', false);
     }
 
     function ajaxCall(file, order, param, sync, item) {
